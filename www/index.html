@@ -24,14 +24,17 @@
   <body ng-app="myreddit" ng-controller="RedditCtrl">
 
     <ion-pane>
-      <ion-header-bar class="bar-stable">
+      <ion-header-bar class="bar-positive">
         <h1 class="title">My reddit</h1>
       </ion-header-bar>
       <ion-content>
-          <div ng-repeat="story in stories">
-              {{story.title}}
+          <div class="list">
+              <a class="item item-thumbnail-left" ng-repeat="story in stories" target="_blank">
+                  <img ng-src="{{story.thumbnail}}" alt="">
+                  <h2>{{story.title}}</h2>
+                  <p>{{story.domain}}</p>
+              </a>
           </div>
-
       </ion-content>
     </ion-pane>
   </body>

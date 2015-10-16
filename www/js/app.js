@@ -1,16 +1,17 @@
 (function(){
 var app = angular.module('myreddit', ['ionic']);
 
-app.controller('RedditCtrl', function($scope){
+app.controller('RedditCtrl', function($scope, $http){
     $scope.stories = [
-        {
-            title: "First sory"
-        },
-        {
-            title: "Second story"
-        }
+
     ];
 
+    $http.get('https://www.reddit.com/r/Android/new/.json')
+        .success(function(response){
+            angular.forEach(response.data.children, function(child){
+                $scope.stories.push(child.data);
+            });
+        });
 });
 
 app.run(function($ionicPlatform) {
