@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('myreddit', ['ionic']);
+var app = angular.module('myreddit', ['ionic', 'angularMoment']);
 
 app.controller('RedditCtrl', function($scope, $http){
     $scope.stories = [

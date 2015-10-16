@@ -11,9 +11,10 @@
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/angular-moment/angular-moment.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -30,9 +31,14 @@
       <ion-content>
           <div class="list">
               <a class="item item-thumbnail-left" ng-repeat="story in stories" target="_blank">
-                  <img ng-src="{{story.thumbnail}}" alt="">
-                  <h2>{{story.title}}</h2>
-                  <p>{{story.domain}}</p>
+                  <img ng-src="{{story.thumbnail}}" alt="" alt=""
+                      ng-if="story.thumbnail.startsWith('http')">
+                      <!-- ng-if="story.thumbnail.indexOf('http') === 0"> -->
+                  <h2 class="story-title">{{story.title}}</h2>
+                  <p>
+                      <span am-time-ago="story.created_utc" am-preprocess="unix"></span>
+                      {{story.domain}}
+                  </p>
               </a>
           </div>
       </ion-content>
